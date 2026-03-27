@@ -1,0 +1,511 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+/* BODY */
+body {
+    background: linear-gradient(145deg, #c3cfc8 0%, #d7f2e8 40%, #c2e8db 100%);
+    color: #000000;
+    min-height: 100vh;
+}
+
+* {
+    color: #000000;
+}
+
+header, .header, footer {
+    color: #000000;
+}
+
+.header h1, .header a {
+    color: #000000;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #000000;
+    background: rgba(255, 255, 255, 0.30);
+    border: 1px solid rgba(0, 0, 0, 0.18);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    text-decoration: none;
+    font-weight: 700;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    margin-bottom: 14px;
+}
+
+.back-button:hover {
+    background: rgba(255, 255, 255, 0.48);
+    transform: translateY(-1px);
+}
+
+.container {
+    width: min(1200px, 92%);
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+section {
+    background: rgba(12, 12, 12, 0.82);
+    border: 1px solid rgba(15, 75, 42, 0.16);
+    border-radius: 28px;
+    box-shadow: 0 10px 24px rgba(12, 50, 29, 0.15);
+    padding: 32px;
+    margin: 20px auto;
+    backdrop-filter: blur(8px);
+    transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+section:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 32px rgba(12, 50, 29, 0.24);
+}
+
+/* HEADER */
+.header {
+    position: absolute;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    background: rgba(255, 255, 255, 0.24);
+    border: 1px solid rgba(0, 0, 0, 0.14);
+    border-radius: 24px;
+    color: #000;
+    padding: 20px 22px;
+    text-align: center;
+    margin: 0;
+    width: min(1080px, 96%);
+    box-shadow: 0 14px 24px rgba(0, 0, 0, 0.19);
+    backdrop-filter: blur(8px);
+}
+
+.header h1 {
+    font-size: clamp(1.7rem, 2.3vw, 2.4rem);
+    letter-spacing: 0.04em;
+}
+
+.header ul {
+    list-style: none;
+    margin-top: 12px;
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.header li {
+    display: inline;
+}
+
+.header a {
+    color: #0a0a0a;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 12px;
+    transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.header a:hover,
+.header a:focus-visible {
+    background-color: rgba(255, 255, 255, 0.18);
+    color: #020202;
+    transform: translateY(-2px);
+}
+
+/* HERO */
+.hero {
+    position: relative;
+    text-align: center;
+    padding: 128px 16px 48px;
+    color: #000;
+    background: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(15, 76, 41, 0.2);
+    border-radius: 24px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    min-height: 620px;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('../img/portada.jpeg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3;
+    z-index: 1;
+}
+
+.hero > * {
+    position: relative;
+    z-index: 2;
+}
+
+.hero h2 {
+    font-size: clamp(2rem, 3vw, 3rem);
+    margin-bottom: 12px;
+}
+
+.hero p {
+    font-size: clamp(1rem, 1.8vw, 1.2rem);
+    margin-bottom: 18px;
+    max-width: 760px;
+    margin-inline: auto;
+}
+
+.btn, .hero button, .card button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border: 1px solid rgba(0, 0, 0, 0.16);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.20);
+    color: #000;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease, border-color 0.22s ease;
+}
+
+#btnContacto {
+    margin-top: 24px;
+}
+
+.servicios {
+    margin-top: 24px;
+}
+
+.btn:hover, .hero button:hover, .card button:hover {
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.24);
+    background: rgba(255, 255, 255, 0.30);
+    border-color: rgba(0, 0, 0, 0.28);
+}
+
+.btn:active, .hero button:active, .card button:active {
+    transform: translateY(0px) scale(0.99);
+    box-shadow: 0 6px 14px rgba(10, 48, 28, 0.4);
+}
+
+/* SERVICIOS */
+.servicios {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.22);
+    border: 1px solid rgba(255, 255, 255, 0.48);
+    backdrop-filter: blur(8px);
+    border-radius: 16px;
+    width: clamp(220px, 32%, 320px);
+    padding: 20px 30px;
+    min-width: 250px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+    margin:0 auto;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 26px rgba(0, 0, 0, 0.18);
+    border-color: rgba(0, 0, 0, 0.35);
+    background: rgba(255, 255, 255, 0.38);
+}
+
+.card-header h3 {
+    font-size: 1.2rem;
+}
+
+.card p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* FOOTER */
+footer {
+    background-color: #f7f3f300;
+    color: #d7f4e5;
+    text-align: center;
+    padding: 16px;
+    border-radius: 0 0 20px 20px;
+    margin-top: 20px;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* ALQUILER PAGE */
+.alquiler-section {
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(15, 75, 42, 0.16);
+    border-radius: 28px;
+    box-shadow: 0 10px 24px rgba(12, 50, 29, 0.15);
+    padding: 32px;
+    margin: 20px auto;
+    backdrop-filter: blur(8px);
+    transition: transform 0.28s ease, box-shadow 0.28s ease;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.alquiler-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.3;
+    z-index: 1;
+}
+
+/* ALQUILER */
+.alquiler-bg::before {
+    background-image: url('../img/portada-alquiler.jpeg');
+}
+
+/* COMPRA */
+.compra-bg::before {
+    background-image: url('../img/fondo-compra.jpeg');
+}
+
+/* SERVICIOS */
+.servicios-bg::before {
+    background-image: url('../img/fondo-servicios.jpeg');
+}
+.alquiler-section > * {
+    position: relative;
+    z-index: 2;
+}
+
+.alquiler-section:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 32px rgba(12, 50, 29, 0.24);
+}
+
+.alquiler-section h2 {
+    font-size: clamp(1.8rem, 2.5vw, 2.5rem);
+    margin-bottom: 12px;
+    color: #000;
+}
+
+.alquiler-section p {
+    font-size: 1.1rem;
+    margin-bottom: 28px;
+    max-width: 800px;
+    margin-inline: auto;
+    color: #000;
+}
+
+.maquinaria-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+}
+
+.maquinaria-grid .card {
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 18px;
+    padding: 20px;
+
+    width: 320px;
+    min-width: 320px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+
+    transition: 0.3s;
+}
+.precios {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.precios p {
+    font-size: 0.9rem;
+    text-align: left;
+}
+
+    .card button {
+    margin-top: 10px;
+    padding: 8px;
+    width: 100%;
+    border-radius: 10px;
+    background: #151616;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.card button:hover {
+    background: #000000;
+    
+.card-link {
+text-decoration: none;
+color: inherit;
+
+/* BOTONES GENERALES */
+button {
+    display: inline-block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 12px;
+
+    background: #070707;
+    color: #0a0a0a;
+
+    border: none;
+    border-radius: 10px;
+
+    font-weight: bold;
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #145c38;
+    transform: translateY(-2px);
+}
+
+/* BOTÓN DENTRO DE TARJETAS */
+.card button {
+    width: 100%;
+}
+
+/* ENLACES QUE CONTIENEN BOTONES */
+.card a {
+    text-decoration: none;
+    display: block;
+}
+
+.maquinaria-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* TARJETAS MÁS GRANDES */
+.card {
+    width: 280px;
+    min-height: 220px;
+}
+
+/* FONDO OSCURO */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(4px);
+    justify-content: center;
+    align-items: center;
+}
+
+/* CAJA */
+.modal-content {
+    background: rgba(255,255,255,0.9);
+    padding: 30px;
+    border-radius: 20px;
+    width: 320px;
+    text-align: center;
+
+    animation: aparecer 0.3s ease;
+}
+
+/* ANIMACIÓN */
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1); 
+
+        /* BOTONES DE AUTENTICACIÓN (HEADER) */
+.auth-buttons {
+    display: flex;
+    gap: 10px; /* separación entre botones */
+}
+
+.auth-buttons button {
+    background: transparent;
+    border: 2px solid black;
+    color: black;
+    padding: 8px 18px;
+    border-radius: 25px; /* bordes redondos */
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: 500;
+}
+
+/* EFECTO HOVER */
+.auth-buttons button:hover {
+    background: white;
+    color: black;
+    backdrop-filter: blur(5px);
+}
+
+
+/* CONTENEDOR */
+.auth-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+/* BOTONES HEADER */
+.btn-auth {
+    background: transparent;
+    border: 2px solid black;
+    color: black;
+    padding: 8px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+/* HOVER */
+.btn-auth:hover {
+    background: black;
+    color: #0f172a;
+    transform: translateY(-2px);
+}
+
+/* CLICK */
+.btn-auth:active {
+    transform: scale(0.95);
+}
+            }
+         }
+     } 
+}  

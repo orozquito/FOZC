@@ -19,43 +19,258 @@ $logueado = isset($_SESSION['usuario']);
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Compra - FOZC</title>
+    <title>Compra-FOZC</title>
     <link rel="stylesheet" href="../css/styles.css">
     <style>
-    .modal { display:none; position:fixed; z-index:100; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.7); }
-    .modal-content { background:white; width:320px; padding:25px; border-radius:15px; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%) scale(0.8); opacity:0; transition:0.3s; }
-    .modal.show .modal-content { transform:translate(-50%,-50%) scale(1); opacity:1; }
-    .modal-content input { width:100%; padding:10px; margin:10px 0; box-sizing:border-box; }
-    .modal-content button { width:100%; padding:10px; background:transparent; border:2px solid #000000; color:#000000; border-radius:25px; cursor:pointer; transition:0.3s; margin-top:8px; }
-    .modal-content button:hover { background:#000000; color:white; }
-    .close { float:right; cursor:pointer; font-size:20px; line-height:1; }
-    .switch { margin-top:10px; font-size:14px; cursor:pointer; color:black; text-align:center; }
-    .error-msg { background:#fee2e2; color:#b91c1c; border-radius:8px; padding:8px 12px; margin-bottom:10px; font-size:14px; text-align:center; }
-    .user-panel { display:flex; align-items:center; justify-content:center; gap:12px; margin-bottom:8px; }
-    .btn-logout { background:transparent; border:1px solid black; color:black; padding:6px 16px; border-radius:20px; cursor:pointer; font-size:14px; text-decoration:none; transition:0.3s; display:inline-block; width:auto; margin:0; }
-    .btn-logout:hover { background:black; color:white; }
+ 
+    .modal { 
+        display:none; 
+        position:fixed; 
+        z-index:100; 
+        left:0; 
+        top:0; 
+        width:100%; 
+        height:100%; 
+        background:rgba(0,0,0,0.7); 
+    }
 
-    .btn-proveedores { width:100%; padding:7px 10px; margin-top:6px; background:transparent; border:1px solid rgba(0,0,0,0.35); color:#000; border-radius:10px; cursor:pointer; font-size:0.78rem; font-weight:600; letter-spacing:0.03em; transition:0.25s; display:block; }
-    .btn-proveedores:hover { background:rgba(0,0,0,0.08); border-color:rgba(0,0,0,0.6); transform:translateY(-1px); }
+    .modal-content { 
+        background:white; 
+        width:320px; 
+        padding:25px; 
+        border-radius:15px; 
+        position:absolute; 
+        top:50%; 
+        left:50%; 
+        transform:translate(-50%,-50%) scale(0.8); 
+        opacity:0; 
+        transition:0.3s; 
+    }
 
-    #modalProveedores { display:none; position:fixed; z-index:200; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.75); }
-    .prov-content { background:white; width:min(460px,92%); padding:28px; border-radius:18px; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%) scale(0.85); opacity:0; transition:0.3s; max-height:85vh; overflow-y:auto; }
-    #modalProveedores.show .prov-content { transform:translate(-50%,-50%) scale(1); opacity:1; }
-    .prov-titulo { font-size:1.1rem; font-weight:700; margin-bottom:4px; }
-    .prov-subtitulo { font-size:0.85rem; color:#555; margin-bottom:18px; }
-    .prov-lista { display:flex; flex-direction:column; gap:12px; }
-    .prov-card { border:1px solid rgba(0,0,0,0.15); border-radius:12px; padding:14px 16px; display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; transition:0.2s; }
+    .modal.show .modal-content { 
+        transform:translate(-50%,-50%)scale(1);
+        opacity:1;
+    }
+
+    .modal-content input { 
+        width:100%; 
+        padding:10px; 
+        margin:10px 0; 
+        box-sizing:border-box; 
+    }
+
+    .modal-content button { 
+        width:100%; 
+        padding:10px; 
+        background:transparent; 
+        border:2px solid #000000; 
+        color:#000000; border-radius:25px; 
+        cursor:pointer; 
+        transition:0.3s; 
+        margin-top:8px; 
+    }
+
+    .modal-content button:hover { 
+        background:#000000; 
+        color:white; 
+    }
+
+    .close { float:right; 
+        cursor:pointer; 
+        font-size:20px; 
+        line-height:1; 
+    }
+
+    .switch { 
+        margin-top:10px; 
+        font-size:14px; 
+        cursor:pointer; 
+        color:black; 
+        text-align:center; 
+    }
+
+    .error-msg { 
+        background:#fee2e2; 
+        color:#b91c1c; 
+        border-radius:8px; 
+        padding:8px 12px; 
+        margin-bottom:10px; 
+        font-size:14px; 
+        text-align:center; 
+    }
+
+    .user-panel { 
+    display:flex; 
+    align-items:center; 
+    justify-content:center; 
+    gap:12px; 
+    margin-bottom:8px; 
+}
+    
+    .btn-logout { 
+        background:transparent; 
+        border:1px solid black; 
+        color:black; 
+        padding:6px 16px; 
+        border-radius:20px; 
+        cursor:pointer; 
+        font-size:14px; 
+        text-decoration:none; 
+        transition:0.3s; 
+        display:inline-block; 
+        width:auto; 
+        margin:0; 
+    }
+    
+    .btn-logout:hover { 
+        background:black; 
+        color:white; 
+    }
+
+    .btn-proveedores { 
+        width:100%; 
+        padding:7px 10px; 
+        margin-top:6px; 
+        background:transparent; 
+        border:1px solid rgba(0,0,0,0.35); 
+        color:#000; 
+        border-radius:10px; 
+        cursor:pointer; 
+        font-size:0.78rem; 
+        font-weight:600; 
+        letter-spacing:0.03em; 
+        transition:0.25s; 
+        display:block; 
+    }
+    
+    .btn-proveedores:hover { 
+        background:rgba(0,0,0,0.08); 
+        border-color:rgba(0,0,0,0.6); 
+        transform:translateY(-1px); 
+    }
+
+    
+    #modalProveedores { 
+        display:none; 
+        position:fixed; 
+        z-index:200; 
+        left:0; 
+        top:0; 
+        width:100%; 
+        height:100%; 
+        background:rgba(0,0,0,0.75); 
+    }
+    
+    .prov-content { 
+        background:white; 
+        width:min(460px,92%); 
+        padding:28px; 
+        border-radius:18px; 
+        position:absolute; 
+        top:50%; left:50%; 
+        transform:translate(-50%,-50%) scale(0.85); 
+        opacity:0; 
+        transition:0.3s; 
+        max-height:85vh; 
+        overflow-y:auto; 
+    }
+    
+    #modalProveedores.show .prov-content { 
+        transform:translate(-50%,-50%)scale(1); 
+        opacity:1; 
+    }
+    
+    .prov-titulo { 
+        font-size:1.1rem; 
+        font-weight:700; 
+        margin-bottom:4px; 
+    }
+    
+    .prov-subtitulo { 
+        font-size:0.85rem; 
+        color:#555; 
+        margin-bottom:18px; 
+    }
+    
+    .prov-lista {
+        display:flex; 
+        flex-direction:column; 
+        gap:12px;
+    }
+
+    
+    .prov-card { 
+        border:1px solid rgba(0,0,0,0.15); 
+        border-radius:12px; 
+        padding:14px 16px; 
+        display:flex; 
+        align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; transition:0.2s; }
+    
     .prov-card:hover { background:rgba(0,0,0,0.03); border-color:rgba(0,0,0,0.3); }
+    
     .prov-info { flex:1; }
-    .prov-nombre { font-weight:700; font-size:0.95rem; }
-    .prov-precio { font-size:0.92rem; color:#0d6e3a; font-weight:600; margin-top:3px; }
-    .prov-badge { font-size:0.7rem; padding:2px 8px; border-radius:20px; font-weight:700; white-space:nowrap; }
-    .badge-caro  { background:#fee2e2; color:#b91c1c; }
-    .badge-medio { background:#fef3c7; color:#92400e; }
-    .badge-eco   { background:#dcfce7; color:#15803d; }
-    .prov-btn { padding:7px 16px; border-radius:20px; border:none; background:#0d3e26; color:white; cursor:pointer; font-size:0.82rem; font-weight:600; transition:0.25s; width:auto; margin:0; display:inline-block; white-space:nowrap; }
-    .prov-btn:hover { background:#145c38; transform:translateY(-1px); }
-    .prov-close { float:right; cursor:pointer; font-size:20px; line-height:1; }
+    
+    .prov-nombre { 
+        font-weight:700; 
+        font-size:0.95rem; 
+    }
+    
+    .prov-precio { 
+        font-size:0.92rem; 
+        color:#0d6e3a; 
+        font-weight:600; 
+        margin-top:3px; }
+    
+    .prov-badge { 
+        font-size:0.7rem; 
+        padding:2px 8px;
+        border-radius:20px; 
+        font-weight:700; 
+        white-space:nowrap; 
+    }
+    
+    .badge-caro  { 
+        background:#fee2e2; 
+        color:#b91c1c; 
+    }
+    
+    .badge-medio { 
+        background:#fef3c7; 
+        color:#92400e; }
+    
+    .badge-eco   { 
+        background:#dcfce7; 
+        color:#15803d; 
+    }
+    
+    .prov-btn { 
+        padding:7px 16px; 
+        border-radius:20px; 
+        border:none; 
+        background:#0d3e26; 
+        color:white; 
+        cursor:pointer; 
+        font-size:0.82rem; 
+        font-weight:600; 
+        transition:0.25s; 
+        width:auto; 
+        margin:0; 
+        display:inline-block; 
+        white-space:nowrap; 
+    }
+    
+    .prov-btn:hover { 
+        background:#145c38; 
+        transform:translateY(-1px); 
+    }
+    
+    .prov-close { 
+        float:right; 
+        cursor:pointer; 
+        font-size:20px; 
+        line-height:1; 
+    }
+
     </style>
 </head>
 <body>
@@ -67,9 +282,39 @@ $logueado = isset($_SESSION['usuario']);
         <a href="../logout.php" class="btn-logout">Cerrar sesión</a>
     </div>
 <?php else: ?>
-    <div style="display:flex;justify-content:center;gap:15px;margin-bottom:8px;">
-        <button style="background:transparent;border:1px solid white;color:black;padding:8px 20px;border-radius:20px;cursor:pointer;font-size:15px;font-weight:400;transition:0.3s;" onclick="abrirModal('login')">INICIAR SESIÓN</button>
-        <button style="background:transparent;border:1px solid white;color:black;padding:8px 20px;border-radius:20px;cursor:pointer;font-size:15px;font-weight:400;transition:0.3s;" onclick="abrirModal('registro')">REGISTRARSE</button>
+    <div 
+    style=
+    "display:flex;
+    justify-content:center;
+    gap:15px;
+    margin-bottom:8px;">
+
+        <button style=
+        "background:transparent;
+        border:1px solid white;
+        color:black;padding:8px 20px;
+        border-radius:20px;
+        cursor:pointer;
+        font-size:15px;
+        font-weight:400;
+        transition:0.3s;" 
+
+        onclick="abrirModal('login')">INICIAR SESIÓN</button>
+
+        <button 
+        style=
+        "background:transparent;
+        border:1px solid white;
+        color:black;
+        padding:8px 20px;
+        border-radius:20px;
+        cursor:pointer;
+        font-size:15px;
+        font-weight:400;
+        transition:0.3s;"
+
+         onclick="abrirModal('registro')">REGISTRARSE</button>
+         
     </div>
 <?php endif; ?>
     <h1>FOZC</h1>

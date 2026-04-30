@@ -111,7 +111,7 @@ function generarWhatsAppServicio($servicio) {
 }
     </style>
 </head>
-<body>
+<body style="padding-top: 0px;">
 
 <header class="header">
 <?php if(isset($_SESSION['usuario'])): ?>

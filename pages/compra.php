@@ -273,7 +273,7 @@ $logueado = isset($_SESSION['usuario']);
 
     </style>
 </head>
-<body>
+<body style="padding-top: 150px;">
 
 <header class="header">
 <?php if(isset($_SESSION['usuario'])): ?>

@@ -270,7 +270,7 @@ $logueado = isset($_SESSION['usuario']);
     .prov-close { float:right; cursor:pointer; font-size:20px; line-height:1; }
     </style>
 </head>
-<body>
+<body style="padding-top: 150px;">
 
 <header class="header">
 <?php if(isset($_SESSION['usuario'])): ?>
